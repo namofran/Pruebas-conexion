@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Fetch</title>
+</head>
+<body>
+    <script>
+        let url = 'https://api.thingspeak.com/channels/1831954/feeds.json?results=20'
+        
+        fetch(url)  //realizamos una solicitud a la url
+            .then(blob => blob.json()) //resolvemos la promesa, al obtener la respuesta la pasamos a json
+            .then(data => console.log(data)) //leemos el objeto y la mostramos por consola
+            .catch(error => console.log(error))
+   </script>
+</body>
+</html>

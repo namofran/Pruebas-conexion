@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hola mundo en JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {                                                                                 //when page is loaded...
+        $.ajax({                                                                                                                            //...build a REST data request: URL, method and format
+          url: 'https://api.thingspeak.com/channels/1831954/feeds.json?results=20',           //see https://www.mathworks.com/help/thingspeak/readlastfieldentry.html
+          type: 'GET',
+          data: {
+            format: 'json'
+          },
+          success: function(response) {                                                                                    //when data is received successfully...
+            console.log(data);                                                                          //...update id="field1"
+          },
+          error: function() {
+            $('#errors').text("There was an error processing your request. Please try again.");
+          }
+        });
+      });
+    </script>
+</head>
+    <body>
+        <div id="field1">xx</div>
+        <div id="errors">yy</div>
+    </body>
+    

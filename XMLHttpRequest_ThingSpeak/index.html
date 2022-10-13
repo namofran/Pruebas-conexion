@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Ejercicio XMLHttpRequest</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>
+
+      <script>
+        const header = document.querySelector('header');
+        const section = document.querySelector('section');
+
+        const requestURL = 'https://api.thingspeak.com/channels/1831954/feeds.json?results=20';
+        const request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+
+        request.onload = function() {
+            const beachData = request.response;
+            console.log(beachData)
+            populateHeader(beachData);
+            showData(beachData);
+        }
+
+        /* function populateHeader(jsonObj) {
+            const myH1 = document.createElement('h1');
+            myH1.textContent = jsonObj['channel'];
+            header.appendChild(myH1);
+        }
+
+        function showData(jsonObj) {
+            const data = jsonObj['feeds'];
+
+            for (var i = 0; i < data.length; i++) {
+
+                const myArticle = document.createElement('article');
+                const myH2 = document.createElement('h2');
+                const myPara1 = document.createElement('p');
+                const myPara2 = document.createElement('p');
+                const myPara3 = document.createElement('p');
+                
+                myH2.textContent = data[i].name;
+                myPara1.textContent = 'Created_at: ' + data[i].created_at;
+                myPara2.textContent = 'ID del transceiver sigfox: ' + data[i].field1;
+                myPara3.textContent = 'Datos JSON: ' + data[i].field4;
+          
+                myArticle.appendChild(myH2);
+                myArticle.appendChild(myPara1);
+                myArticle.appendChild(myPara2);
+                myArticle.appendChild(myPara3);
+                
+                section.appendChild(myArticle);
+            }
+        } */
+      </script>
+  </body>
+</html>
